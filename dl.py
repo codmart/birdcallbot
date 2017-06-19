@@ -32,7 +32,7 @@ def download_photo(url, file_name):
 
 def shorten_audio(bird_id, file_name, seconds):
 	# turn my audio into a nice output (audio shortened to :30 or :45 and fade out) 
-	directory = "/Users/codymartinez/code/" + file_name
+	directory = file_name
 	# open raw mp3
 	raw_audio = AudioSegment.from_file(directory, format="mp3")
 	length = seconds * 1000 # 35 seconds
@@ -95,7 +95,12 @@ def main(bird_number):
 
 
 	# combine the audio and video
-	os.remove("video.mp4")
+	try:
+		os.remove("video.mp4")
+
+	except:
+		pass
+
 	os.system("ffmpeg -loop 1 -i {0}.jpg -i {1}.wav -c:v libx264 -vf: scale='trunc(oh*a/2)*2:720' -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -shortest video.mp4".format(bird_id, bird_id))
 	# clean up old downloads
 	cleanup_files(bird_id)

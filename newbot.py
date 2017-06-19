@@ -12,7 +12,7 @@ api = tweepy.API(auth)
 # What the bot will tweet
 
 # make a new bird
-line = 0
+line = 4
 # populate folder with new media
 main(line)
 
@@ -23,8 +23,8 @@ with open('tweet.txt', 'r') as text:
 media = api.upload_chunked('video.mp4')		# using fitnr fork of tweepy: video_upload2 branch
 api.update_status(status=tweet, media_ids=[media.media_id])
 
-sleep_time = 86400/4 #this will go 4 times a day
-time.sleep(sleep_time)
+#sleep_time = 86400/4 #this will go 4 times a day
+#time.sleep(sleep_time)
 line += 1
 
 print("done")
