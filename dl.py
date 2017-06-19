@@ -55,8 +55,6 @@ def cleanup_files(bird_id):
 
 def main(bird_number):
 
-	#bird_number = bird_number # this could be random? and controlled by the bot
-
 	# make a new bird based on catalog id
 	NewBird = xl.Bird(bird_number)
 	bird_id = NewBird.id 		
@@ -110,4 +108,4 @@ def main(bird_number):
 
 if __name__ == '__main__':
 	main(1)
-	print(xl.Bird.get_Bird_ID() + " done")
+	print(" done")
