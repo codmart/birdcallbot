@@ -12,7 +12,11 @@ api = tweepy.API(auth)
 # What the bot will tweet
 
 # make a new bird
-line = 4
+with open('line.txt', 'r+') as myfile:
+    line=int(myfile.read())
+    myfile.seek(0)
+    myfile.write((str(line+1)))
+
 # populate folder with new media
 main(line)
 
@@ -25,7 +29,7 @@ api.update_status(status=tweet, media_ids=[media.media_id])
 
 #sleep_time = 86400/4 #this will go 4 times a day
 #time.sleep(sleep_time)
-line += 1
+
 
 print("done")
 
