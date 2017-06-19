@@ -90,9 +90,11 @@ def main(bird_number):
 
 
 	# save the bird credentials to an overwritable text file (or maybe it should keep history?)
+	speaker_emoji = u"\U0001F508"
+	camera_emoji = u"\U0001F4F7"
 	with open('tweet.txt', "w+") as text: 		
-		text.write("{0} ({1})\nrecordist: {2}\npic: {3}".format(NewBird.common, NewBird.scientific, NewBird.credit, photo_credit))
-
+		text.write("{0} ({1})\n{4}: {2}\n{5}: {3}".format(NewBird.common, NewBird.scientific, NewBird.credit, photo_credit, speaker_emoji, camera_emoji))
+	 	
 
 	# combine the audio and video
 	try:
