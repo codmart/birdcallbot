@@ -1,3 +1,4 @@
+# birdcallbot xl
 
 # parse through excel sheet to make lists of the data 
 # then use the lists to create a bird class with its data as instance variables
@@ -11,7 +12,7 @@ common_names = [] #holds all common names (for presentation / image)
 sci_names = []  #holds the scientific names (for presentation)
 recordists = [] #holds the recordist names (for credits)
 location = []
-#?maybe consider adding location too
+
 
 for s in wb.sheets():
     for i in range(1, s.nrows): #this is the row we are on
