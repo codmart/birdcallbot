@@ -1,6 +1,6 @@
 # birdcallbot
-(to be run on heroku platform)
+bot which web scrapes audio and photo of birds and automatically posts them to twitter
 
-=== birdcallbot Buildpack URLs
-1. heroku/python
-2. https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
+====
+web source: Cornell Lab of Ornithology's Macaulay Library website
+(python app hosted on heroku platform)
