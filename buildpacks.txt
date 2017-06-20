@@ -1,0 +1,3 @@
+=== birdcallbot Buildpack URLs
+1. heroku/python
+2. https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
