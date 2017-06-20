@@ -1,8 +1,9 @@
-# birdcall bot is a python app running off of Heroku using buildpackages: python and ffmpeg
+# birdcallbot is a python app running off of Heroku using buildpackages: python and ffmpeg
 
 # explanation in psuedo-code
 
-1. xl.py reads through a spreadsheet (ML_Birds_June_2017.xls) of the top 1000 results from Macaulay Library database search for 'Audio' of   'Species: Birds' and then stores it in a series of corresponding lists, which can be called by creating a new Bird object.
+1. xl.py reads through a spreadsheet (ML_Birds_June_2017.xls) of the top 1000 results from Macaulay Library database search for 
+'Audio' of 'Species: Birds' and then stores it in a series of corresponding lists, which can be called by creating a new Bird object.
    
 2. dl.py runs main(), which creates a new Bird object from a given index number (defined by bot) and finds out, 
    based on the spreadsheet id #, where the audio of its call may be stored, and downloads it.
@@ -13,13 +14,17 @@
 4. using the names and credits from the spreadsheet as well as the photo credits from the image found via lxml, we construct a text file
    which stages the tweet for the bot to read later saved under 'tweet.mp4'
    
-5. ffmpeg then truncates the audio to :30, fades it out, and combines it with the photo to make a nice tweetable .mp4 saved under     'video.mp4'
+5. ffmpeg then truncates the audio to :30, fades it out, and combines it with the photo to make a nice tweetable .mp4 saved 
+   under 'video.mp4'
 
-6. newbot.py runs these processes using a given number from 'line.txt', a text file with a single number which, using boto, is accessed from an Amazon S3 bucket. after acessing it adds 1 to the number shown in the text file so that it may progress through the list.
+6. newbot.py runs these processes using a given number from 'line.txt', a text file with a single number which, using boto, is accessed
+   from an Amazon S3 bucket. after acessing it adds 1 to the number shown in the text file so that it may progress through the list.
 
-7. newbot.py uses the the tweepy python twitter api and authorizes connection with API keys defined in the os enviroment (which is also where boto keys are kept)
+7. newbot.py uses the the tweepy python twitter api and authorizes connection with API keys defined in the os enviroment 
+   (which is also where boto keys are kept)
 
-8. using fitnr's fork of the tweepy package (branch: video_upload2), newbot.py chunk uploads 'video.mp4' along with the status defined in 'tweet.txt'
+8. using fitnr's fork of the tweepy package (branch: video_upload2), newbot.py chunk uploads 'video.mp4' along with the status 
+   defined in 'tweet.txt'
 
 9. using Heroku Scheduler add-on, newbot.py will run as a one-off 4 times across 24 hours, for a total of 4 neat posts a day.
 
