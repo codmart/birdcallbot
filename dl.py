@@ -1,6 +1,8 @@
 
-## download and store info from macalauy library from online and excel sheet
-## find corresponding audio and photo to make a :35 sec video
+# birdcallbot dl
+
+# download and store info from macalauy library from online and excel sheet
+#  find corresponding audio and photo to make a :35 sec video
 
 import xl
 import urllib3
@@ -35,9 +37,9 @@ def shorten_audio(bird_id, file_name, seconds):
 	directory = file_name
 	# open raw mp3
 	raw_audio = AudioSegment.from_file(directory, format="mp3")
-	length = seconds * 1000 # 35 seconds
+	length = ((seconds+6) * 1000) # 35 seconds
 	# truncate and fade
-	short_audio = raw_audio[:length].fade_out(5*1000) # 5 second fade
+	short_audio = raw_audio[6000:length].fade_in(1000).fade_out(5*1000) # skip 6 seconds in, fade in and have 5 second fade out
 	# export as wav
 	short_audio.export(bird_id+".wav", format="wav")
 
