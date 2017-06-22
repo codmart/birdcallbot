@@ -1,4 +1,4 @@
-# birdcallbot (v0.2)
+# birdcallbot (v1.0)
 bot which web scrapes audio and photo of birds and automatically posts them to twitter
 
 ====
