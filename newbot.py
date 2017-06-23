@@ -2,12 +2,13 @@
 
 # twitter bot script to run on timed basis
 
-import boto
+import tweepy
+import os
+
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 from dl import main
-import tweepy, time
-import os
+
 
 # set up api
 auth = tweepy.OAuthHandler(os.environ.get('CONSUMER_KEY'), os.environ.get('CONSUMER_SECRET'))
@@ -23,8 +24,7 @@ k.key = 'line.txt'
 line = int(k.get_contents_as_string())
 k.set_contents_from_string(str(line+1))
 
-# make a new bird
-# populate folder with new media
+# make a new bird & populate folder with new media
 main(line)
 
 # what the bot will tweet
@@ -35,8 +35,6 @@ with open('tweet.txt', 'r') as text:
 media = api.upload_chunked('video.mp4')		# using fitnr fork of tweepy: video_upload2 branch
 api.update_status(status=tweet, media_ids=[media.media_id])
 
-# now set timer
 
-
-print(line + "done")
+print("done")
 
