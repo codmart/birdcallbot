@@ -87,7 +87,7 @@ def main(bird_number):
     # download it
     download_photo(top_image, new_bird.id + ".jpg")
     # go to photographer data in HTML (this could be done way quicker in JSON library at the bottom)
-    photographers = tree.xpath("//div[@class= 'caption']/strong/following-sibling::text()[1]")
+    photographers = tree.xpath("//figcaption[@class= 'caption']/strong/following-sibling::text()[1]")
     # clean up results
     photo_credit = clean_result(photographers[image_pick])
 
