@@ -5,7 +5,7 @@
 
 from xlrd import open_workbook
 
-wb = open_workbook('ML_Birds_2017_June.xls') # name of current top 1000 results spreadsheet
+wb = open_workbook('ML_Birds.xls') # name of current top 1000 results spreadsheet
 
 catalog = []  # this holds all the catalog IDs (for url/dl parsing)
 common_names = []  # holds all common names (for presentation / image)

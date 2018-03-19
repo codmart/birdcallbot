@@ -79,24 +79,32 @@ def main(bird_number):
     page = get(photo_url)
     tree = html.fromstring(page.content)
     # get a list of the image sources
-    images = tree.xpath('//img[@alt="{}"]/@src'.format(new_bird.common))
+    images = tree.xpath('//img[@alt="{0}"]/@src'.format(new_bird.common))
     # pick the top one
     image_pick = random.randint(0, 1)
+    
+    #debug
+    #print(images)
+
     image_source = images[image_pick]
     top_image = image_source.replace("640", "large")
     # download it
     download_photo(top_image, new_bird.id + ".jpg")
     # go to photographer data in HTML (this could be done way quicker in JSON library at the bottom)
-    photographers = tree.xpath("//figcaption[@class= 'caption']/strong/following-sibling::text()[1]")
+    photographers = tree.xpath("//a/strong/following-sibling::text()[1]")
     # clean up results
+    print(photographers)
     photo_credit = clean_result(photographers[image_pick])
+
+    audio_credit_split = new_bird.credit.split(", ")
+    audio_credit = "{0} {1}".format(audio_credit_split[1], audio_credit_split[0])
 
     # save the bird credentials to an overwritable text file (or maybe it should keep history?)
     speaker_emoji = u"\U0001F508"
     camera_emoji = u"\U0001F4F7"
     with open('tweet.txt', "w+") as text:
         text.write(
-            "{0} ({1})\n{4}: {2}\n{5}: {3}".format(new_bird.common, new_bird.scientific, new_bird.credit, photo_credit,
+            "{0} ({1})\n{4}: {2}\n{5}: {3}".format(new_bird.common, new_bird.scientific, audio_credit, photo_credit,
                                                    speaker_emoji, camera_emoji))
 
     # combine the audio and video
