@@ -11,5 +11,5 @@ requests==2.17.3
 requests-oauthlib==0.8.0
 six==1.10.0
 git+https://github.com/fitnr/tweepy.git@95c93e63489b0414f18a430ff2427d1c53ae34bd
-urllib3==1.21.1
+urllib3==1.26.5
 xlrd==1.0.0
